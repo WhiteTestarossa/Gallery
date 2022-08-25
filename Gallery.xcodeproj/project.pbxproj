@@ -25,6 +25,7 @@
 		9A2E9BD028B77CD1001356F1 /* s1-text.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9A2E9BC328B77CD1001356F1 /* s1-text.txt */; };
 		9A2E9BD128B77CD1001356F1 /* story-1-path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2E9BC428B77CD1001356F1 /* story-1-path.swift */; };
 		9A2E9BD228B77CD1001356F1 /* s1-title.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9A2E9BC528B77CD1001356F1 /* s1-title.txt */; };
+		9A2E9BD628B79E9A001356F1 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2E9BD528B79E9A001356F1 /* CollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		9A2E9BC328B77CD1001356F1 /* s1-text.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "s1-text.txt"; sourceTree = "<group>"; };
 		9A2E9BC428B77CD1001356F1 /* story-1-path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "story-1-path.swift"; sourceTree = "<group>"; };
 		9A2E9BC528B77CD1001356F1 /* s1-title.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "s1-title.txt"; sourceTree = "<group>"; };
+		9A2E9BD528B79E9A001356F1 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				9A2E9BB328B77CD1001356F1 /* Data */,
 				9A2E9B9F28B75CEE001356F1 /* AppDelegate.swift */,
 				9A2E9BA128B75CEE001356F1 /* SceneDelegate.swift */,
+				9A2E9BD528B79E9A001356F1 /* CollectionViewController.swift */,
 				9A2E9BA528B75CEE001356F1 /* Main.storyboard */,
 				9A2E9BA828B75CF0001356F1 /* Assets.xcassets */,
 				9A2E9BAA28B75CF0001356F1 /* LaunchScreen.storyboard */,
@@ -233,6 +236,7 @@
 				9A2E9BCF28B77CD1001356F1 /* story-2-path.swift in Sources */,
 				9A2E9BA028B75CEE001356F1 /* AppDelegate.swift in Sources */,
 				9A2E9BD128B77CD1001356F1 /* story-1-path.swift in Sources */,
+				9A2E9BD628B79E9A001356F1 /* CollectionViewController.swift in Sources */,
 				9A2E9BC628B77CD1001356F1 /* Data.swift in Sources */,
 				9A2E9BA228B75CEE001356F1 /* SceneDelegate.swift in Sources */,
 				9A2E9BCC28B77CD1001356F1 /* story-4-path.swift in Sources */,
