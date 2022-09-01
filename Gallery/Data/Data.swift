@@ -1,18 +1,16 @@
 //
-// 📰 🐸 
-// Project: RSSchool_T9
-// 
-// Author: Uladzislau Volchyk
-// On: 25.07.21
-// 
-// Copyright © 2021 RSSchool. All rights reserved.
+//  Data.swift
+//  Gallery
+//
+//  Created by Daniel Belokursky on 25.08.22.
+//
 
 import UIKit
 
 extension String {
     static func from(_ file: String) -> String {
         guard let path = Bundle.main.path(forResource: file, ofType: "txt") else {
-            fatalError("LOL, be careful, drink some water")
+            fatalError("Error")
         }
         return try! String(contentsOfFile: path)
     }
