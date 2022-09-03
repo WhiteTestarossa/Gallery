@@ -13,6 +13,7 @@ class GradientView: UIView {
         let gradient = CAGradientLayer()
         
         gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        gradient.cornerRadius = 10.0
         gradient.locations = [0.7, 1.0]
         
         return gradient
