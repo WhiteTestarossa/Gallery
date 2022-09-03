@@ -12,8 +12,8 @@ class CollectionViewCell: UICollectionViewCell {
     static let identifier = "CollectionViewCell"
     
     private let imageView: UIImageView = {
-        
         let imageView = UIImageView()
+        
         let image = UIImage("story-1")
         imageView.image = image
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -49,22 +49,16 @@ class CollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private let gradientLayer: CAGradientLayer = {
-        
-        let gradient = CAGradientLayer()
-        gradient.colors = [UIColor.blue.cgColor, UIColor.red.cgColor]
-        
-        return gradient
-    }()
+    private let gradientView = GradientView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupCellUI()
+        setupCell()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupCellUI()
+        setupCell()
     }
     
 }
@@ -72,19 +66,20 @@ class CollectionViewCell: UICollectionViewCell {
 
 // MARK: - Setup UI
 
-extension CollectionViewCell {
+private extension CollectionViewCell {
+    
+    func setupCell() {
+        setupCellUI()
+        setupImageView()
+        setupGradientView()
+        setupLabels()
+    }
+    
     func setupCellUI() {
-        
         self.contentView.layer.cornerRadius = 18.0
         self.contentView.layer.borderColor = UIColor.black.cgColor
         self.contentView.layer.borderWidth = 1.0
         self.contentView.backgroundColor = UIColor.white
-        
-        setupImageView()
-        setupLabels()
-        
-        gradientLayer.frame = imageView.bounds
-        imageView.layer.insertSublayer(gradientLayer, at: 1)
     }
     
     func setupImageView() {
@@ -99,8 +94,8 @@ extension CollectionViewCell {
     }
     
     func setupLabels() {
-        self.imageView.addSubview(primaryLabel)
-        self.imageView.addSubview(secondaryLabel)
+        self.contentView.addSubview(primaryLabel)
+        self.contentView.addSubview(secondaryLabel)
         
         NSLayoutConstraint.activate([
             secondaryLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 10.0),
@@ -111,4 +106,17 @@ extension CollectionViewCell {
             primaryLabel.bottomAnchor.constraint(equalTo: secondaryLabel.topAnchor, constant: -3.0)
         ])
     }
+    
+    func setupGradientView() {
+        self.contentView.addSubview(gradientView)
+
+        NSLayoutConstraint.activate([
+            gradientView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 8.0),
+            gradientView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 10.0),
+            gradientView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -8.0),
+            gradientView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -10.0)
+        ])
+    }
+    
+    
 }
