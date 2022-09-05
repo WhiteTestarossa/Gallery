@@ -14,8 +14,6 @@ class CollectionViewCell: UICollectionViewCell {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         
-        let image = UIImage("story-1")
-        imageView.image = image
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.borderColor = UIColor.black.cgColor
         imageView.layer.cornerRadius = 10.0
@@ -30,7 +28,6 @@ class CollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Man's best friend"
         label.font = UIFont(name: "Rockwell", size: 16.0)
         label.textColor = UIColor.white
         label.lineBreakMode = .byTruncatingTail
@@ -42,7 +39,6 @@ class CollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Story"
         label.font = UIFont(name: "Rockwell", size: 12.0)
         label.textColor = UIColor.lightGray
         
@@ -59,6 +55,19 @@ class CollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupCell()
+    }
+    
+    func fillData(_ content: ContentType) {
+        switch content {
+        case .gallery(let gallery):
+            imageView.image = gallery.coverImage
+            primaryLabel.text = gallery.title
+            secondaryLabel.text = gallery.type
+        case .story(let story):
+            imageView.image = story.coverImage
+            primaryLabel.text = story.title
+            secondaryLabel.text = story.type
+        }
     }
     
 }

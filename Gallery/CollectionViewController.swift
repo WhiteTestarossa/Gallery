@@ -14,8 +14,6 @@ class CollectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.white
-        
         setupCollectionView()
         
         collectionView.delegate = self
@@ -24,10 +22,19 @@ class CollectionViewController: UIViewController {
         collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.identifier)
     }
     
+}
+
+// MARK: - CollectionView UI Setup
+
+private extension CollectionViewController {
+    
     func setupCollectionView() {
+        self.view.backgroundColor = UIColor.white
+        
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(collectionView)
         collectionView.backgroundColor = .white
+        
         NSLayoutConstraint.activate([
             self.collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             self.collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
@@ -35,13 +42,6 @@ class CollectionViewController: UIViewController {
             self.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
     }
-    
-    
-}
-
-extension CollectionViewController: UICollectionViewDelegate {
-
-    
 }
 
 // MARK: - UICollectionViewDataSource
@@ -49,11 +49,15 @@ extension CollectionViewController: UICollectionViewDelegate {
 extension CollectionViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return FillingData.data.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath)
+        
+        if let cell = cell as? CollectionViewCell {
+            cell.fillData(FillingData.data[indexPath.row])
+        }
         return cell
     }
     
