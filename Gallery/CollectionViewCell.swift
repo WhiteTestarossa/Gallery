@@ -31,6 +31,7 @@ class CollectionViewCell: UICollectionViewCell {
         label.font = UIFont(name: "Rockwell", size: 16.0)
         label.textColor = UIColor.white
         label.lineBreakMode = .byTruncatingTail
+        label.numberOfLines = 1
         
         return label
     }()
@@ -112,7 +113,8 @@ private extension CollectionViewCell {
             secondaryLabel.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -13.0),
             
             primaryLabel.leadingAnchor.constraint(equalTo: secondaryLabel.leadingAnchor),
-            primaryLabel.bottomAnchor.constraint(equalTo: secondaryLabel.topAnchor, constant: -3.0)
+            primaryLabel.bottomAnchor.constraint(equalTo: secondaryLabel.topAnchor, constant: -3.0),
+            primaryLabel.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -15.0)
         ])
     }
     
