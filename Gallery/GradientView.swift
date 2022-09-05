@@ -13,8 +13,6 @@ class GradientView: UIView {
         let gradient = CAGradientLayer()
         
         gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
-        gradient.cornerRadius = 10.0
-        gradient.locations = [0.7, 1.0]
         
         return gradient
     }()
@@ -38,6 +36,9 @@ class GradientView: UIView {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.layer.addSublayer(gradientLayer)
     }
-  
-
+    
+    func setGradient(corner radius: CGFloat, locations: [NSNumber]) {
+        gradientLayer.cornerRadius = radius
+        gradientLayer.locations = locations
+    }
 }

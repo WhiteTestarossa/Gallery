@@ -44,6 +44,17 @@ private extension CollectionViewController {
     }
 }
 
+//MARK: - UICollectionViewDelegate
+
+extension CollectionViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let storyVC = StoryViewController()
+        storyVC.modalPresentationStyle = .fullScreen
+        self.present(storyVC, animated: true, completion: nil)
+    }
+}
+
 // MARK: - UICollectionViewDataSource
 
 extension CollectionViewController: UICollectionViewDataSource {

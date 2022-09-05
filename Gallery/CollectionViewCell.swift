@@ -120,6 +120,7 @@ private extension CollectionViewCell {
     
     func setupGradientView() {
         self.contentView.addSubview(gradientView)
+        gradientView.setGradient(corner: 10.0, locations: [0.7, 1.0])
 
         NSLayoutConstraint.activate([
             gradientView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 8.0),
