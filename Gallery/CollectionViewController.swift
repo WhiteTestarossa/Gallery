@@ -16,6 +16,7 @@ class CollectionViewController: UIViewController {
         
         setupCollectionView()
         
+        // TODO: MOVE TO SETUP
         collectionView.delegate = self
         collectionView.dataSource = self
         
@@ -44,7 +45,7 @@ private extension CollectionViewController {
     }
 }
 
-//MARK: - UICollectionViewDelegate
+// MARK: - UICollectionViewDelegate
 
 extension CollectionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -74,8 +75,8 @@ extension CollectionViewController: UICollectionViewDataSource {
     
 }
 
-//MARK: - UICollectionViewDelegateFlowLayout
-
+// MARK: - UICollectionViewDelegateFlowLayout
+// TODO: MOVE NUMBERS TO UTILS
 extension CollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 179.0, height: 220.0)
