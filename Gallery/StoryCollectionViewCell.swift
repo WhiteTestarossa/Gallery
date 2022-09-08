@@ -13,7 +13,7 @@ class StoryCollectionViewCell: UICollectionViewCell {
     
     private let drawingView: UIView = {
        let view = UIView()
-        
+        // FIXME: BACKGROUND
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.blue
         
@@ -23,6 +23,7 @@ class StoryCollectionViewCell: UICollectionViewCell {
     private let drawingLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
         
+        // FIXME: LINES COLOR AND FILL
         layer.strokeColor = UIColor.red.cgColor
         layer.lineWidth = 1.0
         

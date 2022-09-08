@@ -9,8 +9,8 @@ import UIKit
 
 class StoryViewController: UIViewController {
     
-//    let dataObject: Story
-
+    //    let dataObject: Story
+    
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         
@@ -24,7 +24,7 @@ class StoryViewController: UIViewController {
         let view = UIView()
         
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.gray
+        view.backgroundColor = UIColor.black
         
         return view
     }()
@@ -46,22 +46,37 @@ class StoryViewController: UIViewController {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-
-    
+        
+        
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = UIColor.white
         
         return collectionView
     }()
-//
-//    init(with story: Story) {
-//        self.dataObject = story
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-//
+    
+    private let textContainer: UIView = {
+        let view = UIView()
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.borderColor = UIColor.white.cgColor
+        view.layer.borderWidth = 1
+        view.layer.cornerRadius = 8
+        
+        return view
+    }()
+    
+    private let textLabel: UILabel = {
+        let label = UILabel()
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: "Rockwell", size: 24)
+        label.textColor = UIColor.white
+        label.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et tempus lacus. Quisque varius libero at est vulputate luctus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse dignissim erat ex, ut auctor ipsum tristique sed. Donec nec porta turpis, at bibendum ante. Maecenas condimentum dui nec sodales maximus. Praesent congue, erat a sodales volutpat, metus eros lobortis mauris, nec malesuada ex arcu id felis."
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -73,14 +88,6 @@ class StoryViewController: UIViewController {
     @objc func closeButtonTapped(_ sender: CloseButton) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        print(scrollView.contentSize.width)
-//        print(scrollView.contentSize.height)
-//        print(scrollView.frame)
-//    }
-    
 }
 
 // MARK: - Setup ViewController UI
@@ -94,7 +101,9 @@ extension StoryViewController {
         contentView.addSubview(coverView)
         contentView.addSubview(dividerView)
         contentView.addSubview(collectionView)
-  
+        contentView.addSubview(textContainer)
+        textContainer.addSubview(textLabel)
+        
         
         NSLayoutConstraint.activate([
             scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
@@ -118,13 +127,13 @@ extension StoryViewController {
             // FIXME: CONSTANT
             closeButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40.0)
         ])
-
+        
         NSLayoutConstraint.activate([
             coverView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20.0),
             coverView.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 30),
             coverView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20.0)
         ])
-
+        
         NSLayoutConstraint.activate([
             dividerView.topAnchor.constraint(equalTo: coverView.bottomAnchor, constant: 40.0),
             dividerView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.517),
@@ -136,8 +145,21 @@ extension StoryViewController {
             collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30.0),
             collectionView.topAnchor.constraint(equalTo: dividerView.bottomAnchor, constant: 40.0),
             collectionView.heightAnchor.constraint(equalToConstant: 100),
-            collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30.0),
-            collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20.0)
+            collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30.0)
+        ])
+        
+        NSLayoutConstraint.activate([
+            textContainer.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 20.0),
+            textContainer.topAnchor.constraint(equalTo: self.collectionView.bottomAnchor, constant: 40.0),
+            textContainer.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -20.0),
+            textContainer.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -30.0)
+        ])
+        
+        NSLayoutConstraint.activate([
+            textLabel.leadingAnchor.constraint(equalTo: textContainer.leadingAnchor, constant: 30.0),
+            textLabel.topAnchor.constraint(equalTo: textContainer.topAnchor, constant: 30.0),
+            textLabel.trailingAnchor.constraint(equalTo: textContainer.trailingAnchor, constant: -40.0),
+            textLabel.bottomAnchor.constraint(equalTo: textContainer.bottomAnchor, constant: -30.0)
         ])
     }
     
