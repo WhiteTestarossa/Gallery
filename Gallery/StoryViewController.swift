@@ -8,11 +8,14 @@
 import UIKit
 
 class StoryViewController: UIViewController {
+    
+//    let dataObject: Story
 
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.backgroundColor = .brown
         
         return scrollView
     }()
@@ -38,13 +41,32 @@ class StoryViewController: UIViewController {
         
         return view
     }()
- 
+    
+    private let collectionView: UICollectionView = {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .horizontal
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
 
-
+    
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = UIColor.white
+        
+        return collectionView
+    }()
+//
+//    init(with story: Story) {
+//        self.dataObject = story
+//    }
+//
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+//
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
+        setupCollectionView()
         closeButton.addTarget(self, action: #selector(closeButtonTapped(_:)), for: .touchUpInside)
     }
     
@@ -52,15 +74,16 @@ class StoryViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        print(scrollView.contentSize.width)
-        print(scrollView.contentSize.height)
-        print(scrollView.frame)
-    }
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//        print(scrollView.contentSize.width)
+//        print(scrollView.contentSize.height)
+//        print(scrollView.frame)
+//    }
     
 }
 
+// MARK: - Setup ViewController UI
 
 extension StoryViewController {
     
@@ -70,6 +93,7 @@ extension StoryViewController {
         contentView.addSubview(closeButton)
         contentView.addSubview(coverView)
         contentView.addSubview(dividerView)
+        contentView.addSubview(collectionView)
   
         
         NSLayoutConstraint.activate([
@@ -91,6 +115,7 @@ extension StoryViewController {
             closeButton.widthAnchor.constraint(equalToConstant: 40.0),
             closeButton.heightAnchor.constraint(equalToConstant: 40.0),
             closeButton.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 30.0),
+            // FIXME: CONSTANT
             closeButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40.0)
         ])
 
@@ -104,9 +129,67 @@ extension StoryViewController {
             dividerView.topAnchor.constraint(equalTo: coverView.bottomAnchor, constant: 40.0),
             dividerView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.517),
             dividerView.heightAnchor.constraint(equalToConstant: 1.0),
-            dividerView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            dividerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20.0)
+            dividerView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30.0),
+            collectionView.topAnchor.constraint(equalTo: dividerView.bottomAnchor, constant: 40.0),
+            collectionView.heightAnchor.constraint(equalToConstant: 100),
+            collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30.0),
+            collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20.0)
         ])
     }
     
+    func setupCollectionView() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(StoryCollectionViewCell.self, forCellWithReuseIdentifier: StoryCollectionViewCell.identifier)
+    }
 }
+
+// MARK: - UICollectionViewDelegate
+
+extension StoryViewController: UICollectionViewDelegate {
+    
+}
+
+// MARK: - UICollectionViewDataSource
+
+extension StoryViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StoryCollectionViewCell.identifier, for: indexPath)
+        
+        if let cell = cell as? StoryCollectionViewCell {
+            cell.fillData(path: CGPath.story1path3)
+        }
+        
+        return cell
+    }
+    
+    
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension StoryViewController: UICollectionViewDelegateFlowLayout {
+    // FIXME: TO UTILS
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 75.0, height: 75.0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 100
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 50.0, bottom: 0, right: 20.0)
+    }
+}
+
+

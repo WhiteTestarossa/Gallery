@@ -36,6 +36,7 @@ private extension CollectionViewController {
         self.view.addSubview(collectionView)
         collectionView.backgroundColor = .white
         
+        // FIXME: REMOVE, ADD INSETS FOR COLLECTIONVIEW
         NSLayoutConstraint.activate([
             self.collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             self.collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
@@ -76,7 +77,8 @@ extension CollectionViewController: UICollectionViewDataSource {
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
-// TODO: MOVE NUMBERS TO UTILS
+// FIXME: MOVE NUMBERS TO UTILS
+// FIXME: SIZE OF ITEMS? SPACING BETWEEN THEM? (TOP AND BOTTTOM SPACING)
 extension CollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 179.0, height: 220.0)

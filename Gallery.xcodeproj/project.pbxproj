@@ -31,6 +31,7 @@
 		9A4C929F28C5EC7F00C26731 /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4C929E28C5EC7F00C26731 /* StoryViewController.swift */; };
 		9A4C92A128C5F4B300C26731 /* CoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4C92A028C5F4B300C26731 /* CoverView.swift */; };
 		9A6985D828C73B900016D7AC /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6985D728C73B900016D7AC /* CloseButton.swift */; };
+		9A6985DA28C893750016D7AC /* StoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6985D928C893750016D7AC /* StoryCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		9A4C929E28C5EC7F00C26731 /* StoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
 		9A4C92A028C5F4B300C26731 /* CoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverView.swift; sourceTree = "<group>"; };
 		9A6985D728C73B900016D7AC /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
+		9A6985D928C893750016D7AC /* StoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				9A4C929C28C32E5000C26731 /* GradientView.swift */,
 				9A6985D728C73B900016D7AC /* CloseButton.swift */,
 				9A4C929E28C5EC7F00C26731 /* StoryViewController.swift */,
+				9A6985D928C893750016D7AC /* StoryCollectionViewCell.swift */,
 				9A4C92A028C5F4B300C26731 /* CoverView.swift */,
 				9A2E9BA528B75CEE001356F1 /* Main.storyboard */,
 				9A2E9BA828B75CF0001356F1 /* Assets.xcassets */,
@@ -259,6 +262,7 @@
 				9A4C92A128C5F4B300C26731 /* CoverView.swift in Sources */,
 				9A4C929F28C5EC7F00C26731 /* StoryViewController.swift in Sources */,
 				9A2E9BA228B75CEE001356F1 /* SceneDelegate.swift in Sources */,
+				9A6985DA28C893750016D7AC /* StoryCollectionViewCell.swift in Sources */,
 				9A2E9BCC28B77CD1001356F1 /* story-4-path.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
