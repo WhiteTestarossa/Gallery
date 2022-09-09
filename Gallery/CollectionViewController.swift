@@ -50,10 +50,16 @@ private extension CollectionViewController {
 
 extension CollectionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let dataObject = FillingData.data[indexPath.row]
+        switch dataObject {
+        case .story(let story):
+            let storyVC = StoryViewController(with: story)
+            storyVC.modalPresentationStyle = .fullScreen
+            self.present(storyVC, animated: true, completion: nil)
+        case .gallery(let gallery):
+            print("OK")
+        }
         
-        let storyVC = StoryViewController()
-        storyVC.modalPresentationStyle = .fullScreen
-        self.present(storyVC, animated: true, completion: nil)
     }
 }
 

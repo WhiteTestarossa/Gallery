@@ -12,8 +12,6 @@ class CoverView: UIView {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         
-        let image = UIImage("story-1")
-        imageView.image = image
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
         imageView.contentMode = UIView.ContentMode.scaleAspectFill
@@ -37,7 +35,6 @@ class CoverView: UIView {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Man's best friend"
         label.font = UIFont(name: "Rockwell", size: 48.0)
         label.textColor = UIColor.white
         label.numberOfLines = 2
@@ -60,7 +57,6 @@ class CoverView: UIView {
     private let typeLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "Story"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "Rockwell", size: 24.0)
         label.textColor = UIColor.white
@@ -113,6 +109,12 @@ class CoverView: UIView {
             gradientView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
             gradientView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor)
         ])
+    }
+    
+    func setImageAndTitle(withImage: UIImage, title: String, type: String) {
+        imageView.image = withImage
+        titleLabel.text = title
+        typeLabel.text = type
     }
     
 }

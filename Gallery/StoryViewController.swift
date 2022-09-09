@@ -9,7 +9,7 @@ import UIKit
 
 class StoryViewController: UIViewController {
     
-    //    let dataObject: Story
+    var dataObject: Story
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -69,11 +69,19 @@ class StoryViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "Rockwell", size: 24)
         label.textColor = UIColor.white
-        label.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et tempus lacus. Quisque varius libero at est vulputate luctus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse dignissim erat ex, ut auctor ipsum tristique sed. Donec nec porta turpis, at bibendum ante. Maecenas condimentum dui nec sodales maximus. Praesent congue, erat a sodales volutpat, metus eros lobortis mauris, nec malesuada ex arcu id felis."
         label.numberOfLines = 0
         
         return label
     }()
+    
+    init(with story: Story) {
+        self.dataObject = story
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,6 +89,7 @@ class StoryViewController: UIViewController {
         setupUI()
         setupCollectionView()
         closeButton.addTarget(self, action: #selector(closeButtonTapped(_:)), for: .touchUpInside)
+        fillData()
     }
     
     @objc func closeButtonTapped(_ sender: CloseButton) {
@@ -166,6 +175,11 @@ extension StoryViewController {
         collectionView.dataSource = self
         collectionView.register(StoryCollectionViewCell.self, forCellWithReuseIdentifier: StoryCollectionViewCell.identifier)
     }
+    
+    func fillData() {
+        coverView.setImageAndTitle(withImage: dataObject.coverImage, title: dataObject.title, type: dataObject.type)
+        textLabel.text = dataObject.text
+    }
 }
 
 // MARK: - UICollectionViewDelegate
@@ -191,14 +205,14 @@ extension StoryViewController: UICollectionViewDelegate {
 extension StoryViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return dataObject.paths.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StoryCollectionViewCell.identifier, for: indexPath)
         
         if let cell = cell as? StoryCollectionViewCell {
-            cell.fillData(path: CGPath.story1path3)
+            cell.fillData(path: dataObject.paths[indexPath.row])
         }
         
         return cell
