@@ -47,9 +47,7 @@ class StoryViewController: UIViewController {
         flowLayout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         
-        
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = UIColor.white
         
         return collectionView
     }()
@@ -174,6 +172,18 @@ extension StoryViewController {
 
 extension StoryViewController: UICollectionViewDelegate {
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let cell = cell as? StoryCollectionViewCell {
+            cell.drawWithTimer()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let cell = cell as? StoryCollectionViewCell {
+            cell.clear()
+        }
+    }
+    
 }
 
 // MARK: - UICollectionViewDataSource
@@ -210,7 +220,7 @@ extension StoryViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 50.0, bottom: 0, right: 20.0)
+        return UIEdgeInsets(top: 0, left: 50.0, bottom: 0, right: 50.0)
     }
 }
 
