@@ -14,7 +14,7 @@ class CoverView: UIView {
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
-        imageView.contentMode = UIView.ContentMode.scaleAspectFill
+        imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 8.0
         imageView.layer.borderWidth = 1
         imageView.layer.borderColor = UIColor.white.cgColor
@@ -38,6 +38,7 @@ class CoverView: UIView {
         label.font = UIFont(name: "Rockwell", size: 48.0)
         label.textColor = UIColor.white
         label.numberOfLines = 2
+        label.lineBreakMode = .byClipping
         
         return label
     }()
@@ -90,6 +91,7 @@ class CoverView: UIView {
             imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             imageView.topAnchor.constraint(equalTo: self.topAnchor),
             imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 1.337),
             imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -18.0),
             
             titleLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 30.0),
@@ -113,8 +115,23 @@ class CoverView: UIView {
     
     func setImageAndTitle(withImage: UIImage, title: String, type: String) {
         imageView.image = withImage
-        titleLabel.text = title
+        titleLabel.attributedText = changeStringFormat(of: title)
         typeLabel.text = type
+    }
+    
+    func changeStringFormat(of str: String) -> NSAttributedString {
+        var string =  NSAttributedString()
+        let style = NSMutableParagraphStyle()
+        style.lineHeightMultiple = 1.25
+        
+        if let font = UIFont(name: "Rockwell", size: 48) {
+            string = NSAttributedString(string: str, attributes: [
+                NSAttributedString.Key.font: font,
+                NSAttributedString.Key.paragraphStyle: style
+            ])
+        }
+        
+       return string
     }
     
 }

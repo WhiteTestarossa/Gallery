@@ -15,7 +15,7 @@ class StoryViewController: UIViewController {
         let scrollView = UIScrollView()
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.backgroundColor = .brown
+        scrollView.backgroundColor = .black
         
         return scrollView
     }()
@@ -24,7 +24,6 @@ class StoryViewController: UIViewController {
         let view = UIView()
         
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.black
         
         return view
     }()
@@ -63,6 +62,7 @@ class StoryViewController: UIViewController {
         return view
     }()
     
+    //FIXME: CHANGE TO TEXTVIEW
     private let textLabel: UILabel = {
         let label = UILabel()
         
@@ -95,6 +95,7 @@ class StoryViewController: UIViewController {
     @objc func closeButtonTapped(_ sender: CloseButton) {
         self.dismiss(animated: true, completion: nil)
     }
+     
 }
 
 // MARK: - Setup ViewController UI
@@ -131,8 +132,7 @@ extension StoryViewController {
             closeButton.widthAnchor.constraint(equalToConstant: 40.0),
             closeButton.heightAnchor.constraint(equalToConstant: 40.0),
             closeButton.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 30.0),
-            // FIXME: CONSTANT
-            closeButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40.0)
+            closeButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25.0)
         ])
         
         NSLayoutConstraint.activate([
@@ -186,6 +186,7 @@ extension StoryViewController {
 
 extension StoryViewController: UICollectionViewDelegate {
     
+
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if let cell = cell as? StoryCollectionViewCell {
             cell.drawWithTimer()
