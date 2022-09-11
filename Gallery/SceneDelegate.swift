@@ -30,7 +30,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let collectionVC = CollectionViewController()
         collectionVC.tabBarItem = UITabBarItem(title: "Items", image: UIImage(systemName: "square.grid.2x2"), tag: 0)
         
-        tabBarController.viewControllers = [collectionVC]
+        let settingsVC = SettingsViewController()
+        let navigationController = UINavigationController(rootViewController: settingsVC)
+        settingsVC.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "gear"), tag: 1)
+        
+        tabBarController.viewControllers = [collectionVC, navigationController]
         
         return tabBarController
     }
