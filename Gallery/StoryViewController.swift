@@ -189,7 +189,11 @@ extension StoryViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if let cell = cell as? StoryCollectionViewCell {
-            cell.drawWithTimer()
+            if (SettingsViewController.toDraw){
+                cell.drawWithTimer()
+            } else {
+                cell.drawWithoutTimer()
+            }
         }
     }
     

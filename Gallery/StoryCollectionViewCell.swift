@@ -25,7 +25,7 @@ class StoryCollectionViewCell: UICollectionViewCell {
         let layer = CAShapeLayer()
         
         // FIXME: LINES COLOR 
-        layer.strokeColor = UIColor.red.cgColor
+        layer.strokeColor = UIColor.yellow.cgColor
         layer.lineWidth = 1.0
         layer.strokeEnd = 0
         layer.strokeStart = 0
@@ -63,11 +63,13 @@ class StoryCollectionViewCell: UICollectionViewCell {
     
     func fillData(path: CGPath)  {
         drawingLayer.path = path
+        drawingLayer.strokeColor = ColorsViewController.drawColor.cgColor
     }
     
     func drawWithTimer()  {
-        // FIXME: CHECK FOR EXISTING TTIMER?
-        timer = Timer(timeInterval: 1.0 / 60.0, repeats: true, block: { [self] timer in
+        //FIXME: MOVE ALL NUMBERS
+        timer?.invalidate()
+        timer = Timer(timeInterval: 1.0/60.0, repeats: true, block: { [self] timer in
             if (drawingLayer.strokeEnd <= 1.0) {
                 drawingLayer.strokeEnd += CGFloat(1.0 / (60.0 * 3.0))
             } else {
@@ -75,6 +77,10 @@ class StoryCollectionViewCell: UICollectionViewCell {
             }
         })
         RunLoop.current.add(timer!, forMode: .common)
+    }
+    
+    func drawWithoutTimer() {
+        drawingLayer.strokeEnd = 1.0
     }
     
     func clear() {

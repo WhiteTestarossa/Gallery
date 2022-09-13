@@ -11,6 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SettingsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
+@property (class, assign, nonatomic) BOOL toDraw;
 @end
 
 NS_ASSUME_NONNULL_END

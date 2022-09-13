@@ -6,6 +6,7 @@
 //
 
 #import "SettingsViewController.h"
+#import "ColorsViewController.h"
 
 @interface SettingsViewController ()
 
@@ -15,12 +16,29 @@
 
 @implementation SettingsViewController
 
+static BOOL _toDraw = TRUE;
+
++ (void)setToDraw:(BOOL)newToDraw
+{
+    _toDraw = newToDraw;
+}
+
++ (BOOL)toDraw
+{
+    return _toDraw;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.navigationItem.title = @"Settings";
     [self setupTableView];
     [self.view setBackgroundColor:UIColor.whiteColor];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.tableView reloadData];
 }
 
 
@@ -39,8 +57,11 @@
        [self.tableView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
        [self.tableView.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor]
     ]];
-    
-   
+}
+
+- (void)changeSwitch:(UISwitch *)sender
+{
+    SettingsViewController.toDraw = sender.isOn;
 }
 
 #pragma mark - UITableViewDataSource
@@ -59,21 +80,41 @@
         cell.textLabel.text = @"Draw strories";
         UISwitch *switchView = [[UISwitch alloc] init];
         switchView.on = TRUE;
+        [switchView addTarget:self action:@selector(changeSwitch:) forControlEvents:UIControlEventValueChanged];
         cell.accessoryView = switchView;
         
     } else if (indexPath.row == 1) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"UITableViewCell"];
         cell.textLabel.text = @"Stroker color";
-        cell.detailTextLabel.text = @"#32423";
+        cell.detailTextLabel.text = ColorsViewController.drawColorName;
+        cell.detailTextLabel.textColor = ColorsViewController.drawColor;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
     return cell;
 }
 
+#pragma mark - UITableViewDelegate
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 52;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 1){
+        ColorsViewController *colorsVC = [[ColorsViewController alloc] init];
+        [self.navigationController pushViewController:colorsVC animated:true];
+    }
+    [tableView deselectRowAtIndexPath:indexPath animated:true];
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 1) {
+        cell.detailTextLabel.text = ColorsViewController.drawColorName;
+    }
 }
 
 @end
