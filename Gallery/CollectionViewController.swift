@@ -57,7 +57,9 @@ extension CollectionViewController: UICollectionViewDelegate {
             storyVC.modalPresentationStyle = .fullScreen
             self.present(storyVC, animated: true, completion: nil)
         case .gallery(let gallery):
-            print("OK")
+            let galleryVC = GalleryViewController(with: gallery)
+            galleryVC.modalPresentationStyle = .fullScreen
+            self.present(galleryVC, animated: true, completion: nil)
         }
         
     }

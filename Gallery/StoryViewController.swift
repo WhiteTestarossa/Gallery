@@ -8,7 +8,7 @@
 import UIKit
 
 class StoryViewController: UIViewController {
-    
+    //FIXME: TO PRIVATE?
     var dataObject: Story
     
     private let scrollView: UIScrollView = {
