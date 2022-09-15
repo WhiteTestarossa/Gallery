@@ -48,4 +48,8 @@ class GalleryImageView: UIControl {
     func setImage(image: UIImage) {
         self.imageView.image = image
     }
+    
+    func getImage() -> UIImage? {
+        return imageView.image
+    }
 }

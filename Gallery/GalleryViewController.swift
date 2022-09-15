@@ -64,7 +64,12 @@ class GalleryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        closeButton.addTarget(self, action: #selector(closeButtonTapped(_:)), for: .touchUpInside)
         fillData()
+    }
+    
+    @objc func closeButtonTapped(_ sender: CloseButton) {
+        self.dismiss(animated: true, completion: nil)
     }
 
 }
@@ -131,7 +136,17 @@ extension GalleryViewController {
         for image in dataObject.images {
             let imageView = GalleryImageView()
             imageView.setImage(image: image)
+            imageView.addTarget(self, action: #selector(imageTapped(_:)), for: .touchUpInside)
             stackView.addArrangedSubview(imageView)
         }
+    }
+    
+    @objc func imageTapped(_ sender: GalleryImageView) {
+        let galleryImageVC = GalleryImageViewController()
+        if let image = sender.getImage() {
+            galleryImageVC.setImage(image: image)
+        }
+        galleryImageVC.modalPresentationStyle = .fullScreen
+        self.present(galleryImageVC, animated: true, completion: nil)
     }
 }
