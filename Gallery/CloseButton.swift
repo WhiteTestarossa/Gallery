@@ -72,4 +72,12 @@ class CloseButton: UIControl {
 
         crossLayer.path = combinedPath
     }
+    
+    override var isHighlighted: Bool {
+        didSet {
+            if isHighlighted {
+                    self.alpha = 0.4
+            }
+        }
+    }
 }

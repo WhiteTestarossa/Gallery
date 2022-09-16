@@ -18,7 +18,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.windowScene = windowScene
         
+        UITabBar.appearance().barTintColor = UIColor.white
         UITabBar.appearance().tintColor = UIColor.red
+        UITabBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().tintColor = UIColor.red
         
         window?.rootViewController = rootViewController()
         window?.makeKeyAndVisible()
