@@ -39,7 +39,7 @@ private extension CollectionViewController {
         // FIXME: REMOVE, ADD INSETS FOR COLLECTIONVIEW
         NSLayoutConstraint.activate([
             self.collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            self.collectionView.topAnchor.constraint(equalTo: self.view.topAnchor),
             self.collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             self.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
@@ -89,7 +89,9 @@ extension CollectionViewController: UICollectionViewDataSource {
 // FIXME: SIZE OF ITEMS? SPACING BETWEEN THEM? (TOP AND BOTTTOM SPACING)
 extension CollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 179.0, height: 220.0)
+        let width = collectionView.bounds.width * 0.43
+        let height = width * 1.23
+        return CGSize(width: width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -97,6 +99,6 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0.0, right: 20.0)
+        return UIEdgeInsets(top: 40.0, left: 20.0, bottom: 50.0, right: 20.0)
     }
 }
