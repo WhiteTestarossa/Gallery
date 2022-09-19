@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		9A2E9BA028B75CEE001356F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2E9B9F28B75CEE001356F1 /* AppDelegate.swift */; };
 		9A2E9BA228B75CEE001356F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2E9BA128B75CEE001356F1 /* SceneDelegate.swift */; };
-		9A2E9BA728B75CEE001356F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A2E9BA528B75CEE001356F1 /* Main.storyboard */; };
 		9A2E9BA928B75CF0001356F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A2E9BA828B75CF0001356F1 /* Assets.xcassets */; };
 		9A2E9BAC28B75CF0001356F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A2E9BAA28B75CF0001356F1 /* LaunchScreen.storyboard */; };
 		9A2E9BC628B77CD1001356F1 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2E9BB428B77CD1001356F1 /* Data.swift */; };
@@ -45,7 +44,6 @@
 		9A2E9B9C28B75CEE001356F1 /* Gallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A2E9B9F28B75CEE001356F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A2E9BA128B75CEE001356F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9A2E9BA628B75CEE001356F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9A2E9BA828B75CF0001356F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A2E9BAB28B75CF0001356F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A2E9BAD28B75CF0001356F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -112,29 +110,12 @@
 			isa = PBXGroup;
 			children = (
 				9A2E9BB328B77CD1001356F1 /* Data */,
-				9A2E9B9F28B75CEE001356F1 /* AppDelegate.swift */,
-				9A2E9BA128B75CEE001356F1 /* SceneDelegate.swift */,
-				9A2E9BD528B79E9A001356F1 /* CollectionViewController.swift */,
-				9A52CC8F28D5A99F0042AC74 /* CollectionConstants.swift */,
-				9A2E9BD728BA1896001356F1 /* CollectionViewCell.swift */,
-				9A6FE4E028CDB09C00C8EB14 /* SettingsViewController.h */,
-				9A6FE4E128CDB09C00C8EB14 /* SettingsViewController.m */,
-				9A4C929C28C32E5000C26731 /* GradientView.swift */,
-				9A6985D728C73B900016D7AC /* CloseButton.swift */,
-				9A4C929E28C5EC7F00C26731 /* StoryViewController.swift */,
-				9A6C798828D83DAE002B17D6 /* StoryConstants.swift */,
-				9A6985D928C893750016D7AC /* StoryCollectionViewCell.swift */,
-				9A68428728D06C2200AD5AAB /* ColorsViewController.h */,
-				9A68428828D06C2200AD5AAB /* ColorsViewController.m */,
-				9A4C92A028C5F4B300C26731 /* CoverView.swift */,
-				9A2E9BA528B75CEE001356F1 /* Main.storyboard */,
-				9A2E9BA828B75CF0001356F1 /* Assets.xcassets */,
-				9A4AE6F828D1A7E6007AE50B /* GalleryViewController.swift */,
-				9A4AE6FE28D1C3AB007AE50B /* GalleryImageViewController.swift */,
-				9A4AE6FC28D1B563007AE50B /* GalleryImageView.swift */,
-				9A2E9BAA28B75CF0001356F1 /* LaunchScreen.storyboard */,
-				9A2E9BAD28B75CF0001356F1 /* Info.plist */,
+				9A6C798A28D84C4A002B17D6 /* System */,
+				9A6C798B28D84C94002B17D6 /* Collection */,
+				9A6C799028D84DA7002B17D6 /* Modules */,
+				9A6C798E28D84CDF002B17D6 /* Settings */,
 				9A6FE4DF28CDB09C00C8EB14 /* Gallery-Bridging-Header.h */,
+				9A2E9BAD28B75CF0001356F1 /* Info.plist */,
 			);
 			path = Gallery;
 			sourceTree = "<group>";
@@ -197,6 +178,78 @@
 				9A2E9BC528B77CD1001356F1 /* s1-title.txt */,
 			);
 			path = "story-1";
+			sourceTree = "<group>";
+		};
+		9A6C798A28D84C4A002B17D6 /* System */ = {
+			isa = PBXGroup;
+			children = (
+				9A2E9B9F28B75CEE001356F1 /* AppDelegate.swift */,
+				9A2E9BA128B75CEE001356F1 /* SceneDelegate.swift */,
+				9A2E9BAA28B75CF0001356F1 /* LaunchScreen.storyboard */,
+				9A2E9BA828B75CF0001356F1 /* Assets.xcassets */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
+		9A6C798B28D84C94002B17D6 /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				9A2E9BD528B79E9A001356F1 /* CollectionViewController.swift */,
+				9A2E9BD728BA1896001356F1 /* CollectionViewCell.swift */,
+				9A52CC8F28D5A99F0042AC74 /* CollectionConstants.swift */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
+		9A6C798C28D84CA6002B17D6 /* Story */ = {
+			isa = PBXGroup;
+			children = (
+				9A4C929E28C5EC7F00C26731 /* StoryViewController.swift */,
+				9A6985D928C893750016D7AC /* StoryCollectionViewCell.swift */,
+				9A6C798828D83DAE002B17D6 /* StoryConstants.swift */,
+			);
+			path = Story;
+			sourceTree = "<group>";
+		};
+		9A6C798D28D84CC6002B17D6 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				9A4AE6F828D1A7E6007AE50B /* GalleryViewController.swift */,
+				9A4AE6FE28D1C3AB007AE50B /* GalleryImageViewController.swift */,
+				9A4AE6FC28D1B563007AE50B /* GalleryImageView.swift */,
+			);
+			path = Gallery;
+			sourceTree = "<group>";
+		};
+		9A6C798E28D84CDF002B17D6 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				9A6FE4E028CDB09C00C8EB14 /* SettingsViewController.h */,
+				9A6FE4E128CDB09C00C8EB14 /* SettingsViewController.m */,
+				9A68428728D06C2200AD5AAB /* ColorsViewController.h */,
+				9A68428828D06C2200AD5AAB /* ColorsViewController.m */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		9A6C798F28D84D1A002B17D6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9A4C929C28C32E5000C26731 /* GradientView.swift */,
+				9A6985D728C73B900016D7AC /* CloseButton.swift */,
+				9A4C92A028C5F4B300C26731 /* CoverView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9A6C799028D84DA7002B17D6 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				9A6C798C28D84CA6002B17D6 /* Story */,
+				9A6C798D28D84CC6002B17D6 /* Gallery */,
+				9A6C798F28D84D1A002B17D6 /* Views */,
+			);
+			path = Modules;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,7 +318,6 @@
 				9A2E9BCA28B77CD1001356F1 /* s4-title.txt in Resources */,
 				9A2E9BCE28B77CD1001356F1 /* s2-text.txt in Resources */,
 				9A2E9BCD28B77CD1001356F1 /* s2-title.txt in Resources */,
-				9A2E9BA728B75CEE001356F1 /* Main.storyboard in Resources */,
 				9A2E9BD028B77CD1001356F1 /* s1-text.txt in Resources */,
 				9A2E9BD228B77CD1001356F1 /* s1-title.txt in Resources */,
 			);
@@ -305,14 +357,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		9A2E9BA528B75CEE001356F1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9A2E9BA628B75CEE001356F1 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		9A2E9BAA28B75CF0001356F1 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

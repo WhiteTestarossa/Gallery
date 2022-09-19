@@ -62,7 +62,6 @@ class StoryViewController: UIViewController {
         return view
     }()
     
-    //FIXME: CHANGE TO TEXTVIEW
     private let textLabel: UILabel = {
         let label = UILabel()
         
