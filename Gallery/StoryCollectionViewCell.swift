@@ -54,9 +54,9 @@ class StoryCollectionViewCell: UICollectionViewCell {
     func drawWithTimer()  {
         //FIXME: MOVE ALL NUMBERS
         timer?.invalidate()
-        timer = Timer(timeInterval: 1.0/60.0, repeats: true, block: { [self] timer in
+        timer = Timer(timeInterval: 1.0/10.0, repeats: true, block: { [self] timer in
             if (drawingLayer.strokeEnd <= 1.0) {
-                drawingLayer.strokeEnd += CGFloat(1.0 / (60.0 * 3.0))
+                drawingLayer.strokeEnd += CGFloat(1.0 / (10.0 * 3.0))
             } else {
                 timer.invalidate()
             }
