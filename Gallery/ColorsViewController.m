@@ -16,6 +16,8 @@
 
 @implementation ColorsViewController
 
+#pragma mark: Static Variables
+
 static UIColor *_drawColor = nil;
 
 + (UIColor *)drawColor
@@ -55,6 +57,8 @@ static NSString *_drawColorName = nil;
 }
 
 
+#pragma mark: Lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -62,6 +66,8 @@ static NSString *_drawColorName = nil;
     [self setupTableView];
     [self fillColors];
 }
+
+#pragma mark: Setup UI
 
 - (void)setupTableView
 {

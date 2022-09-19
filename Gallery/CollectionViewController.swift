@@ -14,13 +14,8 @@ class CollectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = UIColor.white
         setupCollectionView()
-        
-        // TODO: MOVE TO SETUP
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        
-        collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.identifier)
     }
     
 }
@@ -30,19 +25,22 @@ class CollectionViewController: UIViewController {
 private extension CollectionViewController {
     
     func setupCollectionView() {
-        self.view.backgroundColor = UIColor.white
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(collectionView)
         collectionView.backgroundColor = .white
+        self.view.addSubview(collectionView)
         
-        // FIXME: REMOVE, ADD INSETS FOR COLLECTIONVIEW
         NSLayoutConstraint.activate([
             self.collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             self.collectionView.topAnchor.constraint(equalTo: self.view.topAnchor),
             self.collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             self.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.identifier)
     }
 }
 
@@ -50,12 +48,15 @@ private extension CollectionViewController {
 
 extension CollectionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         let dataObject = FillingData.data[indexPath.row]
+        
         switch dataObject {
         case .story(let story):
             let storyVC = StoryViewController(with: story)
             storyVC.modalPresentationStyle = .fullScreen
             self.present(storyVC, animated: true, completion: nil)
+            
         case .gallery(let gallery):
             let galleryVC = GalleryViewController(with: gallery)
             galleryVC.modalPresentationStyle = .fullScreen
@@ -85,20 +86,19 @@ extension CollectionViewController: UICollectionViewDataSource {
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
-// FIXME: MOVE NUMBERS TO UTILS
-// FIXME: SIZE OF ITEMS? SPACING BETWEEN THEM? (TOP AND BOTTTOM SPACING)
+
 extension CollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.bounds.width * 0.43
-        let height = width * 1.23
+        let width = collectionView.bounds.width * CollectionConstants.shared.cellWidthRatio
+        let height = width * CollectionConstants.shared.cellHeightRatio
         return CGSize(width: width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 30.0
+        return CollectionConstants.shared.minimumLineSpacing
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 40.0, left: 20.0, bottom: 50.0, right: 20.0)
+        return CollectionConstants.shared.cellInsets
     }
 }

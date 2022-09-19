@@ -8,7 +8,7 @@
 import UIKit
 
 class StoryViewController: UIViewController {
-    //FIXME: TO PRIVATE?
+
     var dataObject: Story
     
     private let scrollView: UIScrollView = {
@@ -92,15 +92,20 @@ class StoryViewController: UIViewController {
         fillData()
     }
     
-    @objc func closeButtonTapped(_ sender: CloseButton) {
-        self.dismiss(animated: true, completion: nil)
+    private func fillData() {
+        coverView.setImageAndTitle(withImage: dataObject.coverImage, title: dataObject.title, type: dataObject.type)
+        textLabel.text = dataObject.text
     }
      
+    @objc private func closeButtonTapped(_ sender: CloseButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 // MARK: - Setup ViewController UI
 
-extension StoryViewController {
+private extension StoryViewController {
     
     func setupUI() {
         self.view.addSubview(scrollView)
@@ -176,17 +181,12 @@ extension StoryViewController {
         collectionView.register(StoryCollectionViewCell.self, forCellWithReuseIdentifier: StoryCollectionViewCell.identifier)
     }
     
-    func fillData() {
-        coverView.setImageAndTitle(withImage: dataObject.coverImage, title: dataObject.title, type: dataObject.type)
-        textLabel.text = dataObject.text
-    }
 }
 
 // MARK: - UICollectionViewDelegate
 
 extension StoryViewController: UICollectionViewDelegate {
     
-
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if let cell = cell as? StoryCollectionViewCell {
             if (SettingsViewController.toDraw){
@@ -223,23 +223,24 @@ extension StoryViewController: UICollectionViewDataSource {
         return cell
     }
     
-    
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension StoryViewController: UICollectionViewDelegateFlowLayout {
-    // FIXME: TO UTILS
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 75.0, height: 75.0)
+        let width = StoryConstants.shared.cellWidth
+        let height = StoryConstants.shared.cellHeight
+        return CGSize(width: width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 100
+        return StoryConstants.shared.minimumLineSpacing
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 50.0, bottom: 0, right: 50.0)
+        return StoryConstants.shared.cellInsets
     }
 }
 

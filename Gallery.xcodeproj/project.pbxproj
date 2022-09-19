@@ -33,9 +33,11 @@
 		9A4C929D28C32E5000C26731 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4C929C28C32E5000C26731 /* GradientView.swift */; };
 		9A4C929F28C5EC7F00C26731 /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4C929E28C5EC7F00C26731 /* StoryViewController.swift */; };
 		9A4C92A128C5F4B300C26731 /* CoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4C92A028C5F4B300C26731 /* CoverView.swift */; };
+		9A52CC9028D5A99F0042AC74 /* CollectionConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A52CC8F28D5A99F0042AC74 /* CollectionConstants.swift */; };
 		9A68428928D06C2200AD5AAB /* ColorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A68428828D06C2200AD5AAB /* ColorsViewController.m */; };
 		9A6985D828C73B900016D7AC /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6985D728C73B900016D7AC /* CloseButton.swift */; };
 		9A6985DA28C893750016D7AC /* StoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6985D928C893750016D7AC /* StoryCollectionViewCell.swift */; };
+		9A6C798928D83DAE002B17D6 /* StoryConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6C798828D83DAE002B17D6 /* StoryConstants.swift */; };
 		9A6FE4E228CDB09C00C8EB14 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FE4E128CDB09C00C8EB14 /* SettingsViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -68,10 +70,12 @@
 		9A4C929C28C32E5000C26731 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		9A4C929E28C5EC7F00C26731 /* StoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
 		9A4C92A028C5F4B300C26731 /* CoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverView.swift; sourceTree = "<group>"; };
+		9A52CC8F28D5A99F0042AC74 /* CollectionConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionConstants.swift; sourceTree = "<group>"; };
 		9A68428728D06C2200AD5AAB /* ColorsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorsViewController.h; sourceTree = "<group>"; };
 		9A68428828D06C2200AD5AAB /* ColorsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorsViewController.m; sourceTree = "<group>"; };
 		9A6985D728C73B900016D7AC /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		9A6985D928C893750016D7AC /* StoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		9A6C798828D83DAE002B17D6 /* StoryConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryConstants.swift; sourceTree = "<group>"; };
 		9A6FE4DF28CDB09C00C8EB14 /* Gallery-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Gallery-Bridging-Header.h"; sourceTree = "<group>"; };
 		9A6FE4E028CDB09C00C8EB14 /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		9A6FE4E128CDB09C00C8EB14 /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
@@ -111,12 +115,14 @@
 				9A2E9B9F28B75CEE001356F1 /* AppDelegate.swift */,
 				9A2E9BA128B75CEE001356F1 /* SceneDelegate.swift */,
 				9A2E9BD528B79E9A001356F1 /* CollectionViewController.swift */,
+				9A52CC8F28D5A99F0042AC74 /* CollectionConstants.swift */,
 				9A2E9BD728BA1896001356F1 /* CollectionViewCell.swift */,
 				9A6FE4E028CDB09C00C8EB14 /* SettingsViewController.h */,
 				9A6FE4E128CDB09C00C8EB14 /* SettingsViewController.m */,
 				9A4C929C28C32E5000C26731 /* GradientView.swift */,
 				9A6985D728C73B900016D7AC /* CloseButton.swift */,
 				9A4C929E28C5EC7F00C26731 /* StoryViewController.swift */,
+				9A6C798828D83DAE002B17D6 /* StoryConstants.swift */,
 				9A6985D928C893750016D7AC /* StoryCollectionViewCell.swift */,
 				9A68428728D06C2200AD5AAB /* ColorsViewController.h */,
 				9A68428828D06C2200AD5AAB /* ColorsViewController.m */,
@@ -285,8 +291,10 @@
 				9A4AE6FF28D1C3AB007AE50B /* GalleryImageViewController.swift in Sources */,
 				9A2E9BD628B79E9A001356F1 /* CollectionViewController.swift in Sources */,
 				9A2E9BC628B77CD1001356F1 /* Data.swift in Sources */,
+				9A6C798928D83DAE002B17D6 /* StoryConstants.swift in Sources */,
 				9A4C92A128C5F4B300C26731 /* CoverView.swift in Sources */,
 				9A4C929F28C5EC7F00C26731 /* StoryViewController.swift in Sources */,
+				9A52CC9028D5A99F0042AC74 /* CollectionConstants.swift in Sources */,
 				9A2E9BA228B75CEE001356F1 /* SceneDelegate.swift in Sources */,
 				9A6FE4E228CDB09C00C8EB14 /* SettingsViewController.m in Sources */,
 				9A6985DA28C893750016D7AC /* StoryCollectionViewCell.swift in Sources */,

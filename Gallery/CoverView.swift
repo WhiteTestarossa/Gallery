@@ -73,11 +73,37 @@ class CoverView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setup()
+        fatalError("init(coder:) has not been implemented")
     }
     
-    private func setup()  {
+   private func changeStringFormat(of str: String) -> NSAttributedString {
+        var string =  NSAttributedString()
+        let style = NSMutableParagraphStyle()
+        style.lineHeightMultiple = 1.25
+        
+        if let font = UIFont(name: "Rockwell", size: 48) {
+            string = NSAttributedString(string: str, attributes: [
+                NSAttributedString.Key.font: font,
+                NSAttributedString.Key.paragraphStyle: style
+            ])
+        }
+        
+       return string
+    }
+    
+    func setImageAndTitle(withImage: UIImage, title: String, type: String) {
+        imageView.image = withImage
+        titleLabel.attributedText = changeStringFormat(of: title)
+        typeLabel.text = type
+    }
+    
+}
+
+// MARK: - Setup UI
+
+private extension CoverView {
+    
+    func setup()  {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(imageView)
         self.addSubview(titleLabel)
@@ -112,26 +138,4 @@ class CoverView: UIView {
             gradientView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor)
         ])
     }
-    
-    func setImageAndTitle(withImage: UIImage, title: String, type: String) {
-        imageView.image = withImage
-        titleLabel.attributedText = changeStringFormat(of: title)
-        typeLabel.text = type
-    }
-    
-    func changeStringFormat(of str: String) -> NSAttributedString {
-        var string =  NSAttributedString()
-        let style = NSMutableParagraphStyle()
-        style.lineHeightMultiple = 1.25
-        
-        if let font = UIFont(name: "Rockwell", size: 48) {
-            string = NSAttributedString(string: str, attributes: [
-                NSAttributedString.Key.font: font,
-                NSAttributedString.Key.paragraphStyle: style
-            ])
-        }
-        
-       return string
-    }
-    
 }

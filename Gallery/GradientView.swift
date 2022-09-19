@@ -21,10 +21,9 @@ class GradientView: UIView {
         super.init(frame: frame)
         self.setup()
     }
-
+    
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        self.setup()
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func layoutSubviews() {

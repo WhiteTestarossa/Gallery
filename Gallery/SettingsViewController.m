@@ -16,6 +16,8 @@
 
 @implementation SettingsViewController
 
+#pragma mark - Static Variables
+
 static BOOL _toDraw = TRUE;
 
 + (void)setToDraw:(BOOL)newToDraw
@@ -27,6 +29,8 @@ static BOOL _toDraw = TRUE;
 {
     return _toDraw;
 }
+
+#pragma mark - Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,6 +45,7 @@ static BOOL _toDraw = TRUE;
     [self.tableView reloadData];
 }
 
+#pragma mark - Methods
 
 - (void)setupTableView
 {

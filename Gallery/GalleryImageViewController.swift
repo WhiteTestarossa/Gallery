@@ -60,6 +60,8 @@ class GalleryImageViewController: UIViewController {
     
 }
 
+// MARK: - Setup UI
+
 extension GalleryImageViewController {
     
     func setup() {
@@ -96,6 +98,8 @@ extension GalleryImageViewController {
         
     }
 }
+
+// MARK: - UIScrollViewDelegate
 
 extension GalleryImageViewController: UIScrollViewDelegate {
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {

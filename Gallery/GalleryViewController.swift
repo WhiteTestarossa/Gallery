@@ -68,13 +68,24 @@ class GalleryViewController: UIViewController {
         fillData()
     }
     
-    @objc func closeButtonTapped(_ sender: CloseButton) {
+    @objc private func closeButtonTapped(_ sender: CloseButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func imageTapped(_ sender: GalleryImageView) {
+        let galleryImageVC = GalleryImageViewController()
+        if let image = sender.getImage() {
+            galleryImageVC.setImage(image: image)
+        }
+        galleryImageVC.modalPresentationStyle = .fullScreen
+        self.present(galleryImageVC, animated: true, completion: nil)
     }
 
 }
 
-extension GalleryViewController {
+// MARK: - Setup UI
+
+private extension GalleryViewController {
     
     func setupUI() {
         self.view.addSubview(scrollView)
@@ -141,12 +152,4 @@ extension GalleryViewController {
         }
     }
     
-    @objc func imageTapped(_ sender: GalleryImageView) {
-        let galleryImageVC = GalleryImageViewController()
-        if let image = sender.getImage() {
-            galleryImageVC.setImage(image: image)
-        }
-        galleryImageVC.modalPresentationStyle = .fullScreen
-        self.present(galleryImageVC, animated: true, completion: nil)
-    }
 }

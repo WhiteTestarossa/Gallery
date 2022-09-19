@@ -33,25 +33,7 @@ class CloseButton: UIControl {
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setup()
-    }
-    
-    private func setup() {
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.layer.borderColor = UIColor.white.cgColor
-        self.layer.borderWidth = 1.0
-        
-        crossView.layer.addSublayer(crossLayer)
-        self.addSubview(crossView)
-
-
-        NSLayoutConstraint.activate([
-            crossView.widthAnchor.constraint(equalToConstant: 15.0),
-            crossView.heightAnchor.constraint(equalToConstant: 15.0),
-            crossView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            crossView.centerYAnchor.constraint(equalTo: self.centerYAnchor)
-        ])
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func layoutSubviews() {
@@ -79,5 +61,26 @@ class CloseButton: UIControl {
                     self.alpha = 0.4
             }
         }
+    }
+}
+
+// MARK: - Setup UI
+
+extension CloseButton {
+    
+    private func setup() {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.layer.borderColor = UIColor.white.cgColor
+        self.layer.borderWidth = 1.0
+        
+        crossView.layer.addSublayer(crossLayer)
+        self.addSubview(crossView)
+        
+        NSLayoutConstraint.activate([
+            crossView.widthAnchor.constraint(equalToConstant: 15.0),
+            crossView.heightAnchor.constraint(equalToConstant: 15.0),
+            crossView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            crossView.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+        ])
     }
 }

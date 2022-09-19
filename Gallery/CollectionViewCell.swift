@@ -54,16 +54,17 @@ class CollectionViewCell: UICollectionViewCell {
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupCell()
+        fatalError("init(coder:) has not been implemented")
     }
     
     func fillData(_ content: ContentType) {
+        
         switch content {
         case .gallery(let gallery):
             imageView.image = gallery.coverImage
             primaryLabel.text = gallery.title
             secondaryLabel.text = gallery.type
+            
         case .story(let story):
             imageView.image = story.coverImage
             primaryLabel.text = story.title

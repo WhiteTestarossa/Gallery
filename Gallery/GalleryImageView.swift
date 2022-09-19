@@ -28,8 +28,21 @@ class GalleryImageView: UIControl {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-   
-    private func setup() {
+    
+    func setImage(image: UIImage) {
+        self.imageView.image = image
+    }
+    
+    func getImage() -> UIImage? {
+        return imageView.image
+    }
+}
+
+// MARK: - Setup UI
+
+private extension GalleryImageView {
+    
+    func setup() {
         self.layer.borderColor = UIColor.white.cgColor
         self.layer.borderWidth = 1.0
         self.layer.cornerRadius = 8.0
@@ -43,13 +56,5 @@ class GalleryImageView: UIControl {
             self.imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10.0),
             self.imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 1.366),
         ])
-    }
-    
-    func setImage(image: UIImage) {
-        self.imageView.image = image
-    }
-    
-    func getImage() -> UIImage? {
-        return imageView.image
     }
 }

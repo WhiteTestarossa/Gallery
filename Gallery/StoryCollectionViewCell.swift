@@ -11,7 +11,7 @@ class StoryCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "StoryCollectionViewCell"
     
-    var timer: Timer?
+    private var timer: Timer?
     
     private let drawingView: UIView = {
        let view = UIView()
@@ -24,7 +24,6 @@ class StoryCollectionViewCell: UICollectionViewCell {
     private let drawingLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
         
-        // FIXME: LINES COLOR 
         layer.strokeColor = UIColor.yellow.cgColor
         layer.lineWidth = 1.0
         layer.strokeEnd = 0
@@ -35,7 +34,6 @@ class StoryCollectionViewCell: UICollectionViewCell {
         return layer
     }()
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -43,23 +41,10 @@ class StoryCollectionViewCell: UICollectionViewCell {
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setup()
- 
+        fatalError("init(coder:) has not been implemented")
     }
     
-    // FIXME: EXTENSION
-    func setup() {
-        self.contentView.addSubview(drawingView)
-        drawingView.layer.addSublayer(drawingLayer)
-        
-        NSLayoutConstraint.activate([
-            drawingView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            drawingView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            drawingView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
-            drawingView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor)
-        ])
-    }
+// MARK: - Draw part
     
     func fillData(path: CGPath)  {
         drawingLayer.path = path
@@ -89,4 +74,21 @@ class StoryCollectionViewCell: UICollectionViewCell {
         timer = nil
     }
     
+}
+
+// MARK: - Setup UI
+
+private extension StoryCollectionViewCell {
+    
+    func setup() {
+        self.contentView.addSubview(drawingView)
+        drawingView.layer.addSublayer(drawingLayer)
+        
+        NSLayoutConstraint.activate([
+            drawingView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            drawingView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+            drawingView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+            drawingView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor)
+        ])
+    }
 }
