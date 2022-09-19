@@ -18,6 +18,11 @@ class CollectionViewController: UIViewController {
         setupCollectionView()
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
+    
 }
 
 // MARK: - CollectionView UI Setup
