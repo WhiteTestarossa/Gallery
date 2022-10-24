@@ -84,7 +84,7 @@ static BOOL _toDraw = TRUE;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCell"];
         cell.textLabel.text = @"Draw strories";
         UISwitch *switchView = [[UISwitch alloc] init];
-        switchView.on = TRUE;
+        switchView.on = SettingsViewController.toDraw;
         [switchView addTarget:self action:@selector(changeSwitch:) forControlEvents:UIControlEventValueChanged];
         cell.accessoryView = switchView;
         
